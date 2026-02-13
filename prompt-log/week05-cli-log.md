@@ -60,3 +60,68 @@
 
 - GitHub repository: https://github.com/JasonEG/M05CLI-process-package
 - `.gitignore` added to project root
+
+---
+
+## Entry 3 — BPMN 2.0 XML Generation
+
+**Date:** 2026-02-13
+**Tool:** Claude Code (CLI)
+
+### Prompt
+
+> Using SOP.md, generate a BPMN 2.0 XML file for the process.
+> - Start event + end event required.
+> - Use tasks for steps, gateways for decisions.
+> - Use lanes ONLY if roles differ materially.
+> - Do NOT invent systems or approvals.
+> Write to diagrams/bpmn/process.bpmn.
+
+### What Was Done
+
+1. Read `SOP.md` and the existing Mermaid diagram to understand the full process flow.
+2. Generated a BPMN 2.0 XML file with a single Teacher pool (all steps performed by the same role).
+3. Mapped all 10 SOP steps to tasks, 3 decision points to exclusive gateways, and included start/end events.
+4. Included a BPMNDiagram section with layout coordinates for rendering in tools like bpmn.io.
+
+### Key Decisions
+
+- Used a single pool with no lanes initially, since all process steps are performed by the Teacher.
+- Two end events: normal completion and early "No action needed" exit.
+- Loop-backs match the SOP exactly (Gateway 2 "No" → Task 4; Gateway 3 "No" → Task 7).
+- No systems or approvals were invented; every element maps directly to the SOP.
+
+### Output
+
+- `process-package/diagrams/bpmn/process.bpmn`
+
+---
+
+## Entry 4 — BPMN Lanes for Three Roles
+
+**Date:** 2026-02-13
+**Tool:** Claude Code (CLI)
+
+### Prompt
+
+> Edit the BPMN file to include roles for Teacher, Administrator, and Secretary.
+
+### What Was Done
+
+1. Restructured the BPMN file to use a single pool with three horizontal lanes: Administrator, Teacher, and Secretary.
+2. Added `Task_SendReminder` ("Send grading reminder email to teachers") in the Administrator lane, mapped from the Principal's documented responsibility in the SOP.
+3. Added `Task_ReceiveConfirmation` ("Receive grade confirmation email") in the Secretary lane, mapped from the Secretary's documented responsibility in the SOP.
+4. Moved the start event to the Administrator lane and the process-complete end event to the Secretary lane.
+5. All existing Teacher tasks, gateways, and loop-backs were preserved in the Teacher lane.
+
+### Key Decisions
+
+- Administrator lane maps to the SOP's "Principal" role (sends grading reminder).
+- Secretary lane reflects the documented responsibility of receiving the confirmation email.
+- Cross-lane sequence flows connect Admin → Teacher (reminder triggers decision) and Teacher → Secretary (email confirmation).
+- The "No action needed" end event stays in the Teacher lane since that decision belongs to the Teacher.
+- No steps were invented; both new tasks come directly from the SOP roles section.
+
+### Output
+
+- `process-package/diagrams/bpmn/process.bpmn` (updated with 3 lanes)
