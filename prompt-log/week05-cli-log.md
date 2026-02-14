@@ -125,3 +125,40 @@
 ### Output
 
 - `process-package/diagrams/bpmn/process.bpmn` (updated with 3 lanes)
+
+---
+
+## Entry 5 — Diagram Rendering and README Documentation
+
+**Date:** 2026-02-13
+**Tool:** Claude Code (CLI)
+
+### Prompt
+
+> Render the BPMN diagram and Mermaid diagram and place them in the respective folders. Then update the README with clear instructions on how to regenerate documentation artifacts. Also update the CHANGELOG.
+
+### What Was Done
+
+1. Read both diagram source files (`process.bpmn` and `process.mmd`) to understand their content.
+2. Rendered the Mermaid flowchart to SVG using `mmdc` (Mermaid CLI v11.12.0).
+3. Rendered the BPMN diagram to PNG using `bpmn-to-image` (v0.10.0).
+4. Expanded `README.md` from a single heading into a full project overview including:
+   - Project description
+   - Repository structure tree
+   - Diagram regeneration instructions with prerequisites and CLI commands for both Mermaid and BPMN
+5. Added a `[1.1.0] — 2026-02-13` entry to `CHANGELOG.md` documenting the new rendered diagrams and README updates.
+6. Committed and pushed all changes to `origin/master` on GitHub.
+
+### Key Decisions
+
+- Used `mmdc -t default` for a clean, neutral theme on the Mermaid SVG.
+- Regeneration instructions specify running commands from the `process-package/` directory to keep paths simple.
+- Prerequisites section tells users to install both `@mermaid-js/mermaid-cli` and `bpmn-to-image` globally via npm.
+- Version bumped to 1.1.0 (minor) since new content was added without breaking changes.
+
+### Output
+
+- `process-package/diagrams/mermaid/process.svg` (regenerated)
+- `process-package/diagrams/bpmn/process.png` (regenerated)
+- `process-package/README.md` (expanded)
+- `process-package/CHANGELOG.md` (v1.1.0 added)
