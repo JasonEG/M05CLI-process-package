@@ -33,3 +33,17 @@ The git repository is located inside `process-package/`, **not** at the `M05CLI`
 - Diagrams exist in both source format (`.mmd`, `.bpmn`) and rendered format (`.svg`, `.png`). When updating a diagram, edit the source file; the rendered file should be regenerated.
 - The `artifacts/examples/` and `artifacts/screenshots/` directories are for supporting evidence referenced by the SOP or README.
 - The prompt log tracks AI-assisted interactions during development of this process package.
+- The `validation-log.md` records cross-artifact consistency checks. When validating, append a new entry there.
+
+## Where We Left Off
+
+**Date:** 2026-02-15
+
+Completed validations:
+1. **SOP ↔ Mermaid ↔ BPMN** — PASS. All steps, decisions, and loop-backs match. BPMN includes additional Admin/Secretary tasks from the SOP roles section (intentional).
+2. **Glossary ↔ SOP** — PASS with one minor gap. "Traditional Grades" (Step 7 screen) is not in the glossary but was deemed not necessary to add.
+
+Next steps to pick up:
+- Any further validation checks the user wants to run
+- The `artifacts/examples/` and `artifacts/screenshots/` directories are still empty — may need supporting evidence added
+- CHANGELOG could be updated if more changes are made

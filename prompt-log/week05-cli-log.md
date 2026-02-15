@@ -220,3 +220,33 @@
 ### Output
 
 - `process-package/validation-log.md` (new file)
+
+---
+
+## Entry 8 — Glossary / SOP Validation
+
+**Date:** 2026-02-15
+**Tool:** Claude Code (CLI)
+
+### Prompt
+
+> Validate the glossary against the SOP.
+
+### What Was Done
+
+1. Compared every term in `glossary.md` (3 roles, 5 systems/tools, 3 process terms) against usage in `SOP.md`.
+2. All 11 glossary entries matched the SOP accurately.
+3. Identified one minor gap: "Traditional Grades" (Step 7 screen name) is not in the glossary, but user deemed it unnecessary to add.
+4. Recorded results as Entry 2 in `validation-log.md`.
+5. Updated `CLAUDE.md` with a "Where We Left Off" section to preserve session context.
+
+### Key Decisions
+
+- Result: **PASS** — all glossary entries are accurate.
+- The "Traditional Grades" gap was noted but intentionally not addressed.
+- Added session context to `CLAUDE.md` so future sessions know where to pick up.
+
+### Output
+
+- `process-package/validation-log.md` (Entry 2 added)
+- `process-package/CLAUDE.md` (updated with validation status and next steps)
