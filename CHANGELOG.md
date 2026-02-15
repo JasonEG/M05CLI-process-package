@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1] — 2026-02-15
+
+### Added
+
+- `CLAUDE.md` moved into the repository with a new **Git Repository** section documenting that the repo root is `process-package/`.
+
 ## [1.1.0] — 2026-02-13
 
 ### Added
